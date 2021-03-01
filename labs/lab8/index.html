@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+
+        <script>
+            let clickedBtn;
+
+            // Reset first question's buttons to original state when another one is clicked
+            function resetButton(btn) {
+                btn.style.backgroundColor = '#d9edff';
+                btn.style.color = '#212529';
+            }
+
+            function checkAnswer1(btn, color) {
+                const errorMsg = document.getElementById('error1');
+
+                // Reset previously clicked button styles
+                if (clickedBtn) {
+                    resetButton(clickedBtn);
+                }
+                clickedBtn = btn;
+
+                if (color === 'pink') {
+                    errorMsg.textContent = 'Correct!';
+                    btn.style.backgroundColor = 'green';
+                } else {
+                    errorMsg.textContent = 'Incorrect!';
+                    btn.style.backgroundColor = 'red';
+                }
+
+                btn.style.color = 'white';
+                errorMsg.style.display = 'block';
+            }
+
+            function checkAnswer2() {
+                const countryTyped = document.getElementById('countryName');
+                const errorMsg = document.getElementById('error2');
+
+                if (countryTyped.value.toLowerCase() === 'spain') {
+                    errorMsg.textContent = 'Correct!';
+                    countryTyped.style.backgroundColor = 'green';
+                } else {
+                    errorMsg.textContent = 'Incorrect!';
+                    countryTyped.style.backgroundColor = 'red';
+                }
+
+                countryTyped.style.color = 'white';
+                errorMsg.style.display = 'block';
+            }
+
+        </script>
+
+    </head>
+    <body>
+
+        <div class="jumbotron">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+
+                <h3>What is the most common colour of toilet paper in France?</h3>
+                <p id="error1"></p>
+                <div>
+                    <button type="button" onclick="checkAnswer1(this, 'blue')">Blue</button>
+                    <button type="button" onclick="checkAnswer1(this, 'white')">White</button>
+                    <button type="button" onclick="checkAnswer1(this, 'yellow')">Yellow</button>
+                    <button type="button" onclick="checkAnswer1(this, 'pink')">Pink</button>
+                    <button type="button" onclick="checkAnswer1(this, 'orange')">Orange</button>
+                </div>
+
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+
+                <h3>If you dug a hole through the centre of the earth starting from Wellington in New Zealand, which European country would you end up in?</h3>
+                <p id="error2"></p>
+                <input id="countryName" type="text" placeholder="Type name of the country"> <button type="button" onclick="checkAnswer2()">Check Answer</button>
+
+            </div>
+
+        </div>
+    </body>
+</html>
