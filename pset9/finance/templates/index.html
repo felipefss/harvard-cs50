@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>TOTAL</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in purchases %}
+            <tr>
+                <td>{{ p.symbol }}</td>
+                <td>{{ p.name }}</td>
+                <td>{{ p.amount }}</td>
+                <td>{{ p.price }}</td>
+                <td>{{ p.total }}</td>
+            </tr>
+            {% endfor %}
+
+            <tr>
+                <th>Cash</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{ cash }}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <th>{{ total }}</th>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
